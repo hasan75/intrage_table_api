@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
+import cellEditFactory, { Type } from 'react-bootstrap-table2-editor';
 
 const TableReact = () => {
   const [data, setData] = useState([]);
@@ -55,6 +56,9 @@ const TableReact = () => {
         hover
         condensed
         pagination={paginationFactory()}
+        cellEdit={cellEditFactory({
+          mode: 'dbclick',
+        })}
       />
     </div>
   );
