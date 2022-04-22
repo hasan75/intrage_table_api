@@ -12,11 +12,17 @@ const TableReact = () => {
       setData(res.data)
     );
   };
+  const emailFOrmatter = (data, row) => {
+    return (
+      <span onClick={() => alert(`Clicked on ${data}`)}>Email = {data}</span>
+    );
+  };
   const columns = [
     {
       dataField: 'email',
       text: 'Email',
       sort: 'true',
+      formatter: emailFOrmatter,
     },
     {
       dataField: 'postId',
