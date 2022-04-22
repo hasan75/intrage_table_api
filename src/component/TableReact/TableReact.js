@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator';
 
 const TableReact = () => {
   const [data, setData] = useState([]);
@@ -14,8 +15,17 @@ const TableReact = () => {
   };
   const emailFOrmatter = (data, row) => {
     return (
-      <span onClick={() => alert(`Clicked on ${data}`)}>Email = {data}</span>
+      <span
+        className='text-warning fw-bold'
+        // onClick={() => alert(`Clicked on ${data}`)}
+      >
+        Email = {data}
+      </span>
     );
+  };
+
+  const onClickFun = (data, row) => {
+    return <span>ID: {data}</span>;
   };
   const columns = [
     {
@@ -27,6 +37,8 @@ const TableReact = () => {
     {
       dataField: 'postId',
       text: 'Product Id',
+      sort: 'true',
+      formatter: onClickFun,
     },
     {
       dataField: 'name',
@@ -41,6 +53,8 @@ const TableReact = () => {
         columns={columns}
         striped
         hover
+        condensed
+        pagination={paginationFactory()}
       />
     </div>
   );
